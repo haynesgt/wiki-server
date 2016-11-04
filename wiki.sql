@@ -13,6 +13,8 @@ CREATE TABLE page (
   content VARCHAR
 );
 
+GRANT ALL ON TABLE page TO wiki_server;
+
 INSERT INTO page (title, content)
   VALUES ('Main', 'hello');
 
