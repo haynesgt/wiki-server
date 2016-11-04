@@ -1,17 +1,14 @@
 var express = require("express");
 var app = express();
-var fs = require("fs");
+var db = require("./queries");
 
-app.get("/users", function(req, res) {
-  fs.readFile(__dirname + "/" + "users.json", "utf8", function (err, data) {
-    console.log(data);
-    res.end(data);
-  });
+app.get('/api/puppies', db.getAllPuppies);
+app.get('/api/puppies/:id', db.getSinglePuppy);
+app.post('/api/puppies', db.createPuppy);
+app.put('/api/puppies/:id', db.updatePuppy);
+app.delete('/api/puppies/:id', db.removePuppy);
+
+app.listen(3000, function() {
+  console.log('listening on port 3000!');
 });
 
-var server = app.listen(8080, function() {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log("Listening on %s:%s", host, port);
-});
