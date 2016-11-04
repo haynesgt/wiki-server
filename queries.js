@@ -36,7 +36,7 @@ module.exports = {
   getAllPuppies:
     queryFactory(
       function(req) {
-        return ['select * from wiki'];
+        return ['select * from page'];
       },
       'GET ALL pages'
     ),
