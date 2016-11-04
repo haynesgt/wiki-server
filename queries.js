@@ -5,11 +5,10 @@ var options = {
 };
 
 var pgp = require('pg-promise')(options);
-var connectionString = 'postgres://localhost:5432/puppies';
 var db = pgp({
   host: 'localhost',
   port: '5432',
-  database: 'puppies',
+  database: 'wiki',
   user: 'wiki_server',
   password: 'password'
 });
@@ -37,18 +36,18 @@ module.exports = {
   getAllPuppies:
     queryFactory(
       function(req) {
-        return ['select * from pups'];
+        return ['select * from wiki'];
       },
-      'GET ALL puppies'
+      'GET ALL pages'
     ),
   getSinglePuppy:
     queryFactory(
       function(req) {
         return [
-          'select * from pups where id = $1',
+          'select * from page where id = $1',
           parseInt(req.params.id)];
       },
-      'GET PUPPY'
+      'GET ONE page'
     ),
   createPuppy:
     function() {

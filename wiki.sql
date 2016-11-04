@@ -1,16 +1,18 @@
-DROP DATABASE IF EXISTS puppies;
-CREATE DATABASE puppies;
+DROP DATABASE IF EXISTS wiki;
+DROP ROLE IF EXISTS wiki_server;
 
-\c puppies;
+CREATE ROLE wiki_server WITH PASSWORD 'password' LOGIN;
 
-CREATE TABLE pups (
+CREATE DATABASE wiki WITH OWNER = wiki_server;
+
+\c wiki
+
+CREATE TABLE page (
   ID SERIAL PRIMARY KEY,
-  name VARCHAR,
-  breed VARCHAR,
-  age INTEGER,
-  sex VARCHAR
+  title VARCHAR,
+  content VARCHAR
 );
 
-INSERT INTO pups (name, breed, age, sex)
-  VALUES ('Tyler', 'Retrieved', '3', 'M');
+INSERT INTO page (title, content)
+  VALUES ('Main', 'hello');
 
