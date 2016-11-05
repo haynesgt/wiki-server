@@ -12,7 +12,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "start-daemon": "nodemon",
-    "dbconfig": "sudo -u postgres psql -f ./wiki.sql"
+    "dbconfig": "sudo -u postgres psql -f ./wiki.sql",
+    "dbstart": "sudo service postgresql start"
   },
   "repository": {
     "type": "git",
